@@ -3,8 +3,7 @@ public class Player extends Thread {
     @Override
     public void run() {
         int count = 0;
-        while(true) {
-            if(isInterrupted()) return;
+        while (!Thread.interrupted()) {
             if (!Toy.tumbler) {
                 if (count < 5) {
                     try {
@@ -14,7 +13,9 @@ public class Player extends Thread {
                     } catch (InterruptedException err) {
                         err.printStackTrace();
                     }
-                } else break;
+                } else {
+                    break;
+                }
                 count++;
             }
         }

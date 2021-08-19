@@ -4,8 +4,7 @@ public class Toy extends Thread {
 
     @Override
     public void run() {
-        while(true) {
-            if (isInterrupted()) return;
+        while (!Thread.interrupted()) {
             try {
                 if (tumbler) {
                     System.out.println(Thread.currentThread().getName() + ": Tumbler off");
